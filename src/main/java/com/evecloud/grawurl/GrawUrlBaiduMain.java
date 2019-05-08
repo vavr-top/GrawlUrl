@@ -93,8 +93,11 @@ public class GrawUrlBaiduMain {
     }
 
     public static void main(String[] args) throws Exception {
-        List<BaiduUrlBean> result = getResult("山东**集团");
-        createExcel("C:/logs/grawurl/test.xls", result);
+        if (Objects.isNull(args) || args.length < 2) {
+            System.out.println("请输入参数，参数1是要查询内容，参数2是要存放位置");
+        }
+        List<BaiduUrlBean> result = getResult(args[0]);
+        createExcel(args[1], result);
     }
 
     public static void createExcel(String excelName, List<BaiduUrlBean> baiduUrlBeans) throws Exception {
