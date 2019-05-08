@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com</groupId>
-    <artifactId>evecloud</artifactId>
+    <groupId>com.evecloud</groupId>
+    <artifactId>grawurl</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -50,6 +50,8 @@
 
 
     <build>
+        <finalName>grawurl</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -62,6 +64,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">

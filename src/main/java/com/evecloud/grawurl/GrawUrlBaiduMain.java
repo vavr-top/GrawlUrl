@@ -103,8 +103,9 @@ public class GrawUrlBaiduMain {
     public static void createExcel(String excelName, List<BaiduUrlBean> baiduUrlBeans) throws Exception {
         //创建工作簿
         XSSFWorkbook wb = new XSSFWorkbook();
-        //创建一个sheet
-        XSSFSheet sheet = wb.createSheet();
+        //创建sheet
+        XSSFSheet successSheet = wb.createSheet();
+        XSSFSheet failureSheet = wb.createSheet();
 
         // 创建单元格样式
         XSSFCellStyle style = wb.createCellStyle();
@@ -118,9 +119,19 @@ public class GrawUrlBaiduMain {
         style.setBorderTop(BorderStyle.THIN); //上边框加黑
 
         //为单元格添加背景样式
+        int j = 0;
+        int k = 0;
         for (int i = 0; i < baiduUrlBeans.size(); i++) {
             BaiduUrlBean baiduUrlBean = baiduUrlBeans.get(i);
-            Row row = sheet.createRow(i); //创建行
+            Row row;
+            if (baiduUrlBean.success()) {
+                row = successSheet.createRow(j); //创建行
+                j++;
+            } else {
+                row
+                        = failureSheet.createRow(k);
+                k++;
+            }
 
             Cell cell = row.createCell(0);
             cell.setCellStyle(style);

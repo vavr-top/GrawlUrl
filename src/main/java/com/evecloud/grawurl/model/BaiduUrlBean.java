@@ -2,6 +2,8 @@ package com.evecloud.grawurl.model;
 
 import lombok.Data;
 
+import java.util.Objects;
+
 /**
  * @author: zhaoyk
  * @date: 2019-5-7 16:35
@@ -14,4 +16,12 @@ public class BaiduUrlBean {
     private String domainName;//域名
 
     private String link;//链接
+
+    public boolean success() {
+        if (!Objects.isNull(domainName) && domainName.contains(".")) {
+            return true;
+        }
+
+        return false;
+    }
 }
